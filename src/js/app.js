@@ -75,6 +75,24 @@ App = {
 
     var mainCoinInstance;
 
+    switch (web3.version.network) {
+      case "1":
+        $('#network').text('Main');
+        console.log('This is mainnet')
+        break
+      case "2":
+        $('#network').text('Morden Test');
+        console.log('This is the deprecated Morden test network.')
+        break
+      case "3":
+        $('#network').text('Ropsten');
+        console.log('This is the ropsten test network.')
+        break
+      default:
+        $('#network').text('Unbekannt');
+        console.log('This is an unknown network')
+    }
+
     web3.eth.getAccounts(function(error, accounts) {
       if (error) {
         console.log(error);
